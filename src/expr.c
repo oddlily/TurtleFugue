@@ -972,6 +972,12 @@ static Value *function_switch(const ExprFunc *func, int n, const char *parent)
 		(n>2 ? opdstd(n-2) : ""));
             return newint(i);
 
+#if ENABLE_GMCP
+        case FN_gmcp:
+            i = handle_gmcp_function(opdstr(n), (n>1 ? opdstd(n-1) : NULL));
+            return newint(i);
+#endif
+
         case FN_fake_recv:
             i = handle_fake_recv_function(opdstr(n),
 		(n>1 ? opdstd(n-1) : NULL), (n>2 ? opdstd(n-2) : ""));
