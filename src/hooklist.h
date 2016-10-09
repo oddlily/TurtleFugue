@@ -19,6 +19,9 @@ gencode(CONFAIL,	HT_WORLD | HT_XSOCK),
 gencode(CONFLICT,	0),
 gencode(CONNECT,	HT_WORLD | HT_XSOCK),
 gencode(DISCONNECT,	HT_WORLD | HT_XSOCK),
+#if ENABLE_GMCP
+gencode(GMCP,		0),
+#endif
 gencode(ICONFAIL,	HT_WORLD | HT_XSOCK),
 gencode(KILL,		0),
 gencode(LOAD,		0),
