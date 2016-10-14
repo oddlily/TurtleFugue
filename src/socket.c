@@ -210,7 +210,7 @@ static const char *h_errlist[] = {
  * Nonblocking connect will work on a system if the column contains a 'W'
  * and there is no 'F' above it; 'N' does not matter.  The order of the
  * tests is arranged to keep the 'F's below the 'W's.
- * 
+ *
  *                                                        S
  *                                                        o
  *                                      P           L  S  l     H
@@ -665,11 +665,11 @@ void main_loop(void)
         if (depth > 1 && interrupted()) break;
 
         /* deal with pending signals */
-        /* at loop beginning in case of signals before main_loop() */ 
+        /* at loop beginning in case of signals before main_loop() */
         process_signals();
 
         /* run processes */
-        /* at loop beginning in case of processes before main_loop() */ 
+        /* at loop beginning in case of processes before main_loop() */
         gettime(&now);
         if (proctime.tv_sec && tvcmp(&proctime, &now) <= 0)
 	    runall(0, NULL); /* run timed processes */
@@ -1845,7 +1845,7 @@ static int nonblocking_gethost(const char *name, const char *port,
 #ifdef PLATFORM_OS2
     {
         threadpara *tpara;
-  
+
         if ((tpara = XMALLOC(sizeof(threadpara)))) {
             setmode(fds[0],O_BINARY);
             setmode(fds[1],O_BINARY);
@@ -3094,7 +3094,7 @@ static int handle_socket_input(const char *simbuffer, int simlen)
                 continue;  /* avoid non-telnet processing */
 
             } else if (xsock->fsastate == TN_SB) {
-		if (xsock->subbuffer->len > 1023) {
+		if (xsock->subbuffer->len > 5120 ) {
 		    /* It shouldn't take this long; server is broken.  Abort. */
 		    SStringcat(xsock->buffer, CS(xsock->subbuffer));
 		    Stringtrunc(xsock->subbuffer, 0);
@@ -3490,10 +3490,10 @@ const char *world_info(const char *worldname, const char *fieldname)
 {
     World *world;
     const char *result;
- 
+
     world = worldname ? find_world(worldname) : xworld();
     if (!world) return ""; /* not an error */
- 
+
     if (!fieldname || strcmp("name", fieldname) == 0) {
         result = world->name;
     } else if (strcmp("type", fieldname) == 0) {
@@ -3562,4 +3562,3 @@ int nactive(const char *worldname)
         return 0;
     return w->screen->active ? w->screen->nnew : 0;
 }
-
