@@ -5,6 +5,7 @@ TurtleFugue is a fork of the classic TinyFugue MUD client built with Discworld M
 ## New features
 
 * GMCP
+* Python
 
 ## Requirements
 
